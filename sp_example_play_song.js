@@ -1,4 +1,6 @@
-var playsong = function ('response_url')
+
+
+var playsong = function (track_uri)
 {
 
 	var lame = require('lame'),
@@ -6,7 +8,7 @@ var playsong = function ('response_url')
 		fs = require('fs'),
 		Spotify = require('spotify-web');
 
-	var url = response_url || 'spotify:track:1ZBAee0xUblF4zhfefY0W1';
+	var url = track_uri || 'spotify:track:1ZBAee0xUblF4zhfefY0W1';
 
 	var username = '12156614669',
 		password = 'Getinhalo4';
