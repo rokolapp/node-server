@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var request = require('request');
-var playsong = require('../sp_example_play_song');
+//var playsong = require('../sp_example_play_song');
 
 var spotify_api_url = 'https://api.spotify.com/v1/search?';
 /* GET home page. */
@@ -19,7 +19,7 @@ router.post('/', function(req, res, next) {
 
   		var track_uri = data.tracks.items[0].uri +"";
 
-  		playsong(track_uri);
+  		request('http://localhost:8080/?q='+track_uri, function(err2, response2, body2){});
   		
   	}	
   	else {

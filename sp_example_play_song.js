@@ -1,11 +1,33 @@
+var http = require('http');
+var url = require('url');
 
+const PORT = 8080;
 
-var playsong = function (track_uri)
+function handleRequest(req, res){
+	if(req.url == '/favicon.ico')
+		res.end();
+	else{
+		console.log(req.url)
+		var paresedUrl = url.parse(req.url, true);
+		var queryAsObject = paresedUrl.query; 
+
+		console.log(queryAsObject.q);
+		playsong(queryAsObject.q)
+
+		res.end('Playing song');
+	}
+}
+
+var server = http.createServer(handleRequest);
+
+server.listen(PORT, function(){
+	console.log('Server ready');
+});
+
+function playsong (track_uri)
 {
-
 	var lame = require('lame'),
 		Speaker = require('speaker'),
-		fs = require('fs'),
 		Spotify = require('spotify-web');
 
 	var url = track_uri || 'spotify:track:1ZBAee0xUblF4zhfefY0W1';
@@ -32,5 +54,3 @@ var playsong = function (track_uri)
 		});
 	});
 }
-
-module.exports = playsong;
