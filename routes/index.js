@@ -19,7 +19,7 @@ router.post('/', function(req, res, next) {
 
   		var track_uri = data.tracks.items[0].uri +"";
 
-  		request('http://localhost:8080/?q='+track_uri, function(err2, response2, body2){});
+  		request('http://192.168.1.149:8080/?q='+track_uri, function(err2, response2, body2){});
   		
   	}	
   	else {
