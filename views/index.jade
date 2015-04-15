@@ -2,16 +2,13 @@ extends layout
 
 block content
   h1= title
-  p #{title}
+
   if song 
     p #{song}
-  else
-    if playlist
-      p #{playlist}
 
-    else
-      form(action="/", method="post")
-        label Cancion: 
-        input(type="text",name="query")
-        br
-        input(type="submit")
+  else    
+    form(action="/", method="post")
+      label Cancion: 
+      input(type="text",name="query")
+      br
+      input(type="submit")

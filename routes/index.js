@@ -11,17 +11,17 @@ router.get('/', function(req, res, next) {
 
 router.get('/playlist', function(req, res, next) {
 
-  request('http://192.168.1.149:8080/playlist', function(err, response, body){
+  request('http://localhost:8080/playlist', function(err, response, body){
     if(err)
       res.send(err);
     else{
-      console.log(body);/*
-      res.render('index', 
+      body = JSON.parse(body);
+      console.log(body.playlist)
+      res.render('playlist', 
       {
         title: 'Playlist',
         playlist: body.playlist
-      });*/
-      res.send(body)
+      });
     }
       
   });
@@ -39,7 +39,7 @@ router.post('/', function(req, res, next) {
 
   		var track_uri = data.tracks.items[0].uri +"";
 
-  		request('http://192.168.1.149:8080/?q='+track_uri, function(err2, response2, body2){});
+  		request('http://localhost:8080/?q='+track_uri, function(err2, response2, body2){});
   		
   	}	
   	else {

@@ -1,2 +1,2 @@
-# raspberry-server
-Repository for the nodejs server in the raspberry
+# node-server
+Basic express server for test the rasp-server 
