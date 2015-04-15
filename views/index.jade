@@ -6,8 +6,12 @@ block content
   if song 
     p #{song}
   else
-    form(action="/", method="post")
-      label Cancion: 
-      input(type="text",name="query")
-      br
-      input(type="submit")
+    if playlist
+      p #{playlist}
+
+    else
+      form(action="/", method="post")
+        label Cancion: 
+        input(type="text",name="query")
+        br
+        input(type="submit")

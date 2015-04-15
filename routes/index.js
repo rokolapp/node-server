@@ -9,6 +9,26 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Busca tu cancion' });
 });
 
+router.get('/playlist', function(req, res, next) {
+
+  request('http://192.168.1.149:8080/playlist', function(err, response, body){
+    if(err)
+      res.send(err);
+    else{
+      console.log(body);/*
+      res.render('index', 
+      {
+        title: 'Playlist',
+        playlist: body.playlist
+      });*/
+      res.send(body)
+    }
+      
+  });
+
+  
+});
+
 router.post('/', function(req, res, next) {
   var query = req.body.query.replace(" ","+");
 
