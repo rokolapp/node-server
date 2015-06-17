@@ -2,9 +2,11 @@ var express = require('express');
 var router = express.Router();
 var request = require('request');
 var url = require('url');
-var spotify_api_url = 'https://api.spotify.com/v1/search?';
+var spotify_api_url = 'https://api.spotify.com/v1/search?q=';
 
-/* GET users listing. */
+//https://api.spotify.com/v1/search?q=katy+perry&type=artist,track,album&limit=10
+
+/* GET search listing. */
 router.get('/', function(req, res, next){ 
 
 	var search_result = {results:[]}
@@ -12,8 +14,11 @@ router.get('/', function(req, res, next){
 	var parsedUrl = url.parse(req.url, true);
 	var queryAsObject = parsedUrl.query;
 	var query = queryAsObject.query.replace(" ","+");
-	var query_url = spotify_api_url + 'q=' + query + '&type=track&limit=10';
+	console.log(query)
 
+	var query_url = spotify_api_url+query+'&type=artist,track,album&limit=10';
+
+	console.log(query_url)
 	request(query_url, function(err, response, body){
 		if(!err && response.statusCode == 200){
 			data = JSON.parse(body);
