@@ -12,14 +12,9 @@
     "express": "~4.12.2",
     "firebase": "^2.2.7",
     "jade": "~1.9.2",
-    "lame": "*",
     "morgan": "~1.5.1",
-    "protobuf": "*",
     "request": "^2.55.0",
     "serve-favicon": "~2.2.0",
-    "speaker": "*",
-    "spotify-web": "*",
-    "stylus": "0.42.3",
-    "url": "^0.10.3"
+    "stylus": "0.42.3"
   }
 }
