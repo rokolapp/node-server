@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var request = require('request');
 var url = require('url');
-var spotify_api_url = 'https://api.spotify.com/v1/search?q=';
+var spotify_api_url = 'https://lit-wildwood-6408.herokuapp.com/playlist/search?q=';
 
 //https://api.spotify.com/v1/search?q=katy+perry&type=artist,track,album&limit=10
 
