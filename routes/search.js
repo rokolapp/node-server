@@ -26,17 +26,23 @@ router.get('/', function(req, res, next){
 			//var track_uri = data.tracks.items[0].uri +"";
 			var items = data.tracks.items;
 			var result = {}
+			if (items.length > 0) {
+				for(var i=0; i<items.length; i++){
+					result.img_url = data.tracks.items[i].album.images[0].url
+					result.name = data.tracks.items[i].name
+					result.artist = data.tracks.items[i].artists[0].name
+					result.track_uri = data.tracks.items[i].uri
+					search_result.results.push(result)
+					result = {}
+				} 
 
-			for(var i=0; i<items.length; i++){
-				result.img_url = data.tracks.items[i].album.images[0].url
-				result.name = data.tracks.items[i].name
-				result.artist = data.tracks.items[i].artists[0].name
-				result.track_uri = data.tracks.items[i].uri
-				search_result.results.push(result)
-				result = {}
-			} 
+				res.send(search_result);
 
-			res.send(search_result);
+			} else{
+				res.send("No se han encontrado resultados o no estan permitidos");
+			}
+
+			
 			
 		}else{
 			search_result = err
